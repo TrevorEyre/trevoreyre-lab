@@ -11,8 +11,9 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  // import { mapState } from 'vuex'
 
+  import { pens } from 'utils'
   import Grid from 'components/Grid'
   import Experiment from 'components/Experiment'
 
@@ -22,9 +23,17 @@
       Grid,
       Experiment
     },
-    computed: mapState([
-      'experiments'
-    ]),
+    // computed: mapState([
+    //   'experiments'
+    // ]),
+    computed: {
+      experiments () {
+        const experiments = this.$store.state.experiments
+        return pens.map(id => {
+          return experiments.filter(experiment => experiment.id === id)[0]
+        })
+      }
+    }
   }
 </script>
 

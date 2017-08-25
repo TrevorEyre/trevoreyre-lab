@@ -36,7 +36,6 @@
       const url = 'https://cpv2api.com/pens/public/trevoreyre?tag=featured'
       const res = await fetch(url)
       const json = await res.json()
-      console.log(json.data) // eslint-disable-line
       const experiments = json.data.map(mapPensToExperiments)
       store.commit('setExperiments', experiments)
     }
